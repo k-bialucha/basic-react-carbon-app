@@ -6,7 +6,6 @@ import Button from 'carbon-react/lib/components/button';
 const HelloWorld = () => (
   <AppWrapper>
     <h1>Hello world!</h1>
-
     <Button onClick={sayHello}>Click me!</Button>
   </AppWrapper>
 );

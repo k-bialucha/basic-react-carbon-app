@@ -1,13 +1,11 @@
 import React from 'react';
 import { shallow } from 'enzyme';
 import Button from 'carbon-react/lib/components/button';
-import HelloWorld from './hello-world';
+import HelloWorld from './HelloWorld';
 
 // Demonstration of a simple test for the HelloWorld component:
 describe('HelloWorld', () => {
-  const renderShallow = () => (
-    shallow(<HelloWorld />)
-  );
+  const renderShallow = () => shallow(<HelloWorld />);
 
   it('renders a title and button', () => {
     const wrapper = renderShallow();
