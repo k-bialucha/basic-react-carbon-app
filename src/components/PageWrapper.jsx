@@ -7,7 +7,7 @@ const PageWrapper = () => {
   return (
     <div>
       <PageHeader />
-      <AppWrapper />
+      <AppWrapper>AppWrapper content</AppWrapper>
     </div>
   );
 };
