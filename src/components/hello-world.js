@@ -7,13 +7,12 @@ const HelloWorld = () => (
   <AppWrapper>
     <h1>Hello world!</h1>
 
-    <Button onClick={ sayHello }>
-      Click me!
-    </Button>
+    <Button onClick={sayHello}>Click me!</Button>
   </AppWrapper>
 );
 
 function sayHello() {
+  // eslint-disable-next-line no-alert
   alert('Hello world!');
 }
 

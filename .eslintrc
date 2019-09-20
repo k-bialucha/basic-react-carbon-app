@@ -2,5 +2,8 @@
   "extends": "./node_modules/carbon-factory/.eslintrc",
   "globals": {
     "jest": false
+  },
+  "rules": {
+    "react/jsx-curly-spacing": ["error", "never"]
   }
 }
