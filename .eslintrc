@@ -5,6 +5,7 @@
   },
   "rules": {
     "react/jsx-curly-spacing": ["error", "never"],
+    "react/jsx-max-props-per-line": ["warning", { "when": "multiline" }],
     "jsx-quotes": ["error", "prefer-double"]
   }
 }
