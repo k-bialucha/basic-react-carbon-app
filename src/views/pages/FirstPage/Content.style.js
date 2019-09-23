@@ -9,4 +9,6 @@ export const Container = styled.div`
   margin: 10px 5px;
 
   border: 2px dashed ${props => props.borderColor || '#ddd'};
+
+  ${props => props.italic && { fontStyle: 'italic' }}
 `;

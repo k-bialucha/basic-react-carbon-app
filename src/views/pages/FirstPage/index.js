@@ -14,7 +14,9 @@ const generateContentComponent = number => {
   const borderColor = borderColors[order];
   const text = sampleTexts[order];
 
-  return () => <Content text={text} borderColor={borderColor} />;
+  return () => (
+    <Content text={text} borderColor={borderColor} italic={number % 2 !== 0} />
+  );
 };
 
 export const Content1 = generateContentComponent(1);
