@@ -1,25 +1,26 @@
 import React from 'react';
 
-import Row, { Column } from 'carbon-react/lib/components/row/row';
+import { Row, Column } from 'carbon-react/lib/components/row/row';
+import {
+  MenuList,
+  MenuListItem,
+} from 'carbon-react/lib/components/menu-list/menu-list';
+import Pod from 'carbon-react/lib/components/pod/pod';
 
 const FirstPage = () => {
   return (
     <Row columns="3" columnDivide gutter="medium-large">
       <Column>
-        <section>
-          <h3>First Page</h3>
-          <p>Some first page</p>
-        </section>
+        <MenuList href="foo">
+          <MenuListItem>menu list item 1</MenuListItem>
+          <MenuListItem>menu list item 2</MenuListItem>
+          <MenuListItem>menu list item 3</MenuListItem>
+        </MenuList>
       </Column>
       <Column>
-        <section>
-          <h3>Lorem Ipsum [1]</h3>
-          <p>
-            Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-            quo voluptas nulla pariatur?
-          </p>
-        </section>
+        <Pod padding="small" title="My Pod" subtitle="subtitle test">
+          This is some example content for a Pod.
+        </Pod>
       </Column>
       <Column>
         <section>
