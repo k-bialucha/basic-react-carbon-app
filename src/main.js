@@ -7,7 +7,11 @@ import 'carbon-react/lib/utils/css';
 
 import PageWrapper from './components/PageWrapper.jsx';
 import LandingPage from './views/pages/LandingPage.jsx';
-import FirstPage from './views/pages/FirstPage.jsx';
+import FirstPage, {
+  Content1,
+  Content2,
+  Content3,
+} from './views/pages/FirstPage.jsx';
 import SecondPage from './views/pages/SecondPage.jsx';
 
 // Defines routes and corresponding components for app
@@ -15,7 +19,12 @@ import SecondPage from './views/pages/SecondPage.jsx';
 startRouter(
   <Route component={PageWrapper}>
     <Route path="/" component={LandingPage} />
-    <Route path="/first" component={FirstPage} />
+    <Route path="/first" component={FirstPage}>
+      <Route path="content1" component={Content1} />
+      <Route path="content2" component={Content2} />
+      <Route path="content3" component={Content3} />
+      {/* TODO: <Redirect from="/first" to="/first/content2" /> */}
+    </Route>
     <Route path="/second" component={SecondPage} />
     <Redirect from="/*" to="/" />
   </Route>
