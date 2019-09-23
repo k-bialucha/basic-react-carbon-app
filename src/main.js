@@ -19,11 +19,11 @@ import SecondPage from './views/pages/SecondPage.jsx';
 startRouter(
   <Route component={PageWrapper}>
     <Route path="/" component={LandingPage} />
+    <Redirect from="/first" to="/first/content2" />
     <Route path="/first" component={FirstPage}>
       <Route path="content1" component={Content1} />
       <Route path="content2" component={Content2} />
       <Route path="content3" component={Content3} />
-      {/* TODO: <Redirect from="/first" to="/first/content2" /> */}
     </Route>
     <Route path="/second" component={SecondPage} />
     <Redirect from="/*" to="/" />
