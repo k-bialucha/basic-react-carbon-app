@@ -11,7 +11,7 @@ import FirstPage, {
   Content1,
   Content2,
   Content3,
-} from './views/pages/FirstPage.jsx';
+} from './views/pages/FirstPage/index.js';
 import SecondPage from './views/pages/SecondPage.jsx';
 
 // Defines routes and corresponding components for app

@@ -42,12 +42,4 @@ FirstPage.propTypes = {
   children: PropTypes.node.isRequired,
 };
 
-const generateContentComponent = text => {
-  return () => <div>Content component {text}</div>;
-};
-
-export const Content1 = generateContentComponent(1);
-export const Content2 = generateContentComponent(2);
-export const Content3 = generateContentComponent(3);
-
 export default FirstPage;
