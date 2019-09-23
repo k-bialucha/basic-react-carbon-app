@@ -13,27 +13,25 @@ const checkIfSelected = (path, routes) => {
   return isSelected;
 };
 
-const PageHeader = ({ routes }) => {
-  return (
-    <NavigationBar>
-      <Menu>
-        <Link to="/">
-          <MenuItem selected={checkIfSelected('/', routes)}>Landing</MenuItem>
-        </Link>
-        <Link to="/first">
-          <MenuItem selected={checkIfSelected('/first', routes)}>
-            First Page
-          </MenuItem>
-        </Link>
-        <Link to="/second">
-          <MenuItem selected={checkIfSelected('/second', routes)}>
-            Second Page
-          </MenuItem>
-        </Link>
-      </Menu>
-    </NavigationBar>
-  );
-};
+const PageHeader = ({ routes }) => (
+  <NavigationBar>
+    <Menu>
+      <Link to="/">
+        <MenuItem selected={checkIfSelected('/', routes)}>Landing</MenuItem>
+      </Link>
+      <Link to="/first">
+        <MenuItem selected={checkIfSelected('/first', routes)}>
+          First Page
+        </MenuItem>
+      </Link>
+      <Link to="/second">
+        <MenuItem selected={checkIfSelected('/second', routes)}>
+          Second Page
+        </MenuItem>
+      </Link>
+    </Menu>
+  </NavigationBar>
+);
 
 PageHeader.propTypes = {
   routes: PropTypes.array.isRequired,
