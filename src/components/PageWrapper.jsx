@@ -3,14 +3,20 @@ import PropTypes from 'prop-types';
 
 import AppWrapper from 'carbon-react/lib/components/app-wrapper/app-wrapper';
 import PageHeader from './PageHeader.jsx';
+import ErrorBoundary from './ErrorBoundary.jsx';
 
 const PageWrapper = ({ router, children }) => {
-  const { routes } = router;
+  const {
+    routes,
+    location: { key },
+  } = router;
 
   return (
     <div>
       <PageHeader routes={routes} />
-      <AppWrapper>{children}</AppWrapper>
+      <AppWrapper>
+        <ErrorBoundary key={key}>{children}</ErrorBoundary>
+      </AppWrapper>
     </div>
   );
 };
