@@ -1,4 +1,7 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
+import { Link } from 'react-router';
 
 import { Row, Column } from 'carbon-react/lib/components/row/row';
 import {
@@ -7,46 +10,44 @@ import {
 } from 'carbon-react/lib/components/menu-list/menu-list';
 import Pod from 'carbon-react/lib/components/pod/pod';
 
-const FirstPage = () => {
+const FirstPage = props => {
+  const basePathname = '/first';
+
   return (
-    <Row columns="3" columnDivide gutter="medium-large">
+    <Row columns="2" columnDivide gutter="medium-large">
       <Column>
         <MenuList href="foo">
-          <MenuListItem>menu list item 1</MenuListItem>
-          <MenuListItem>menu list item 2</MenuListItem>
-          <MenuListItem>menu list item 3</MenuListItem>
+          <Link to={`${basePathname}/content1`}>
+            <MenuListItem>Content 1</MenuListItem>
+          </Link>
+          <Link to={`${basePathname}/content2`}>
+            <MenuListItem>Content 2</MenuListItem>
+          </Link>
+          <Link to={`${basePathname}/content3`}>
+            <MenuListItem>Content 3</MenuListItem>
+          </Link>
         </MenuList>
       </Column>
       <Column>
         <Pod padding="small" title="My Pod" subtitle="subtitle test">
           This is some example content for a Pod.
+          {props.children}
         </Pod>
-      </Column>
-      <Column>
-        <section>
-          <h3>Lorem Ipsum [2]</h3>
-          <p>
-            Et harum quidem rerum facilis est et expedita distinctio. Nam libero
-            tempore, cum soluta nobis est eligendi optio cumque nihil impedit
-            quo minus id quod maxime placeat facere possimus, omnis voluptas
-            assumenda est, omnis dolor repellendus. Temporibus autem quibusdam
-            et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et
-            voluptates repudiandae sint et molestiae non recusandae.
-          </p>
-        </section>
-      </Column>
-      <Column>
-        <section>
-          <h3>Lorem Ipsum [3]</h3>
-          <p>
-            Consectetur, adipisci velit, sed quia non numquam eius modi tempora
-            incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut
-            enim ad minima veniam
-          </p>
-        </section>
       </Column>
     </Row>
   );
 };
+
+FirstPage.propTypes = {
+  children: PropTypes.node.isRequired,
+};
+
+const generateContentComponent = text => {
+  return () => <div>Content component {text}</div>;
+};
+
+export const Content1 = generateContentComponent(1);
+export const Content2 = generateContentComponent(2);
+export const Content3 = generateContentComponent(3);
 
 export default FirstPage;
