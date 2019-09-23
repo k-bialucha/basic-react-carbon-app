@@ -8,6 +8,7 @@
     "react/jsx-max-props-per-line": ["warning", { "when": "multiline" }],
     "arrow-parens": ["error", "as-needed"],
     "comma-dangle": ["error", "always-multiline"],
-    "jsx-quotes": ["error", "prefer-double"]
+    "jsx-quotes": ["error", "prefer-double"],
+    "max-len": ["error", { "ignoreStrings": true, "tabWidth": 2 }]
   }
 }
