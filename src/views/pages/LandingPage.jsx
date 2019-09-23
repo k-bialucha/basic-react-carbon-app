@@ -1,6 +1,12 @@
 import React from 'react';
 
 import Row, { Column } from 'carbon-react/lib/components/row/row';
+import Pod from 'carbon-react/lib/components/pod/pod';
+
+import Fieldset from 'carbon-react/lib/components/fieldset';
+import Date from 'carbon-react/lib/components/date';
+import Textbox from 'carbon-react/lib/components/textbox';
+import Textarea from 'carbon-react/lib/components/textarea';
 
 const LandingPage = () => {
   return (
@@ -12,20 +18,23 @@ const LandingPage = () => {
         </section>
       </Column>
       <Column>
-        <section>
-          <h3>Lorem Ipsum [1]</h3>
-          <p>
-            At vero eos et accusamus et iusto odio dignissimos ducimus qui
-            blanditiis praesentium voluptatum deleniti atque corrupti quos
-            dolores et quas molestias excepturi sint occaecati cupiditate non
-            provident, similique sunt in culpa qui officia deserunt mollitia
-            animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis
-            est et expedita distinctio. Nam libero tempore, cum soluta nobis est
-            eligendi optio cumque nihil impedit quo minus id quod maxime placeat
-            facere possimus, omnis voluptas assumenda est, omnis dolor
-            repellendus.
-          </p>
-        </section>
+        <Pod title="My Form" alignTitle="center" as="tile" padding="large">
+          <Fieldset>
+            <Textbox
+              label="name"
+              labelInline
+              labelWidth={20}
+              labelAlign="right"
+            />
+            <Date label="date" labelInline labelWidth={20} labelAlign="right" />
+            <Textarea
+              label="text"
+              labelInline
+              labelWidth={20}
+              labelAlign="right"
+            />
+          </Fieldset>
+        </Pod>
       </Column>
       <Column>
         <section>
