@@ -8,6 +8,10 @@ import Date from 'carbon-react/lib/components/date';
 import Textbox from 'carbon-react/lib/components/textbox';
 import Textarea from 'carbon-react/lib/components/textarea';
 
+import PresenceValidator from 'carbon-react/lib/utils/validations/presence';
+// import LengthValidator from 'carbon-react/lib/utils/validations/length';
+// import DateRangeValidator from 'carbon-react/lib/utils/validations/date-within-range';
+
 const LandingPage = () => {
   return (
     <Row columns="2" columnDivide={false} gutter="small">
@@ -25,6 +29,17 @@ const LandingPage = () => {
               labelInline
               labelWidth={20}
               labelAlign="right"
+              validations={[
+                new PresenceValidator({
+                  customMessage: 'this field is required',
+                }),
+                // new LengthValidator({
+                //   min: 4,
+                //   max: 10,
+                //   customMessage:
+                //     'this text should have length of 4 up to 10 characters',
+                // }),
+              ]}
             />
             <Date label="date" labelInline labelWidth={20} labelAlign="right" />
             <Textarea
