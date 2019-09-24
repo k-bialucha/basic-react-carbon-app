@@ -1,6 +1,8 @@
 import React from 'react';
 
 import { Container } from 'flux/utils';
+
+import FormActions from './FormActions';
 import FormStore from './FormStore';
 
 const withFormStore = WrappedComponent => props => {
@@ -11,12 +13,13 @@ const withFormStore = WrappedComponent => props => {
 
     static calculateState() {
       return {
-        form: FormStore.getState(),
+        state: FormStore.getState(),
+        onUpdateField: FormActions.updateField,
       };
     }
 
     render() {
-      return <WrappedComponent {...this.props} store={this.state} />;
+      return <WrappedComponent {...this.props} formStore={this.state} />;
     }
   }
 

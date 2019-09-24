@@ -29,7 +29,7 @@ const LandingPage = props => {
           <Fieldset>
             <Textbox
               label="name"
-              value={props.store.form.get('name')}
+              value={props.formStore.state.get('name')}
               labelInline
               labelWidth={20}
               labelAlign="right"
@@ -48,7 +48,12 @@ const LandingPage = props => {
             <Date label="date" labelInline labelWidth={20} labelAlign="right" />
             <Textarea
               label="text"
-              value={props.store.form.get('text')}
+              name="text"
+              value={props.formStore.state.get('text')}
+              onChange={event => {
+                const { name, value } = event.target;
+                props.formStore.onUpdateField(name, value);
+              }}
               labelInline
               labelWidth={20}
               labelAlign="right"
@@ -71,8 +76,9 @@ const LandingPage = props => {
 };
 
 LandingPage.propTypes = {
-  store: PropTypes.shape({
-    form: PropTypes.object.isRequired,
+  formStore: PropTypes.shape({
+    state: PropTypes.object.isRequired,
+    onUpdateField: PropTypes.func.isRequired,
   }).isRequired,
 };
 
