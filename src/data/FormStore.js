@@ -3,13 +3,19 @@ import { ReduceStore } from 'flux/utils';
 import FormActionTypes from './FormActionTypes';
 import Dispatcher from './Dispatcher';
 
+const initialValues = {
+  name: 'Kamil B.',
+  date: null,
+  text: 'Hello, world!',
+};
+
 class TodoStore extends ReduceStore {
   constructor() {
     super(Dispatcher);
   }
 
   getInitialState() {
-    return Immutable.OrderedMap();
+    return Immutable.Map(initialValues);
   }
 
   reduce(state, action) {

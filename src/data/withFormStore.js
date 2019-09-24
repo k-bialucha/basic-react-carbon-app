@@ -3,7 +3,7 @@ import React from 'react';
 import { Container } from 'flux/utils';
 import FormStore from './FormStore';
 
-export const withFormStore = WrappedComponent => props => {
+const withFormStore = WrappedComponent => props => {
   class StoreProvider extends React.Component {
     static getStores() {
       return [FormStore];

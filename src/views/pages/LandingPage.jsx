@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Row, { Column } from 'carbon-react/lib/components/row/row';
 import Pod from 'carbon-react/lib/components/pod/pod';
@@ -12,7 +13,9 @@ import PresenceValidator from 'carbon-react/lib/utils/validations/presence';
 // import LengthValidator from 'carbon-react/lib/utils/validations/length';
 // import DateRangeValidator from 'carbon-react/lib/utils/validations/date-within-range';
 
-const LandingPage = () => {
+import withFormStore from '../../data/withFormStore';
+
+const LandingPage = props => {
   return (
     <Row columns="2" columnDivide={false} gutter="small">
       <Column>
@@ -26,6 +29,7 @@ const LandingPage = () => {
           <Fieldset>
             <Textbox
               label="name"
+              value={props.store.form.get('name')}
               labelInline
               labelWidth={20}
               labelAlign="right"
@@ -44,6 +48,7 @@ const LandingPage = () => {
             <Date label="date" labelInline labelWidth={20} labelAlign="right" />
             <Textarea
               label="text"
+              value={props.store.form.get('text')}
               labelInline
               labelWidth={20}
               labelAlign="right"
@@ -65,4 +70,10 @@ const LandingPage = () => {
   );
 };
 
-export default LandingPage;
+LandingPage.propTypes = {
+  store: PropTypes.shape({
+    form: PropTypes.object.isRequired,
+  }).isRequired,
+};
+
+export default withFormStore(LandingPage);
