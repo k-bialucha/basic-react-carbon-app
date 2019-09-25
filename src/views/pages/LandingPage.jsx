@@ -1,11 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { fromJS } from 'immutable';
+
 import Row, { Column } from 'carbon-react/lib/components/row/row';
 import Pod from 'carbon-react/lib/components/pod/pod';
 
 import Fieldset from 'carbon-react/lib/components/fieldset';
 import Date from 'carbon-react/lib/components/date';
+import Dropdown from 'carbon-react/lib/components/dropdown';
 import Textbox from 'carbon-react/lib/components/textbox';
 import Textarea from 'carbon-react/lib/components/textarea';
 
@@ -22,10 +25,25 @@ const labelPlacementCommonProps = {
   labelAlign: 'right',
 };
 
+const dropdownOptions = fromJS([
+  {
+    id: '1',
+    name: 'orange',
+  },
+  {
+    id: '2',
+    name: 'blue',
+  },
+  {
+    id: '3',
+    name: 'black',
+  },
+]);
+
 const LandingPage = props => {
-  const handleValueChange = event => {
+  const handleValueChange = (event, fallbackName) => {
     const { name, value } = event.target;
-    props.formStore.onUpdateField(name, value);
+    props.formStore.onUpdateField(name || fallbackName, value);
   };
 
   return (
@@ -62,12 +80,7 @@ const LandingPage = props => {
               name="date"
               value={props.formStore.state.get('date')}
               onChange={event => {
-                const fakeTarget = {
-                  name: 'date',
-                  value: event.target.value,
-                };
-                event.target = fakeTarget;
-                handleValueChange(event);
+                handleValueChange(event, 'date');
               }}
               {...labelPlacementCommonProps}
               validations={[
@@ -89,6 +102,16 @@ const LandingPage = props => {
                     'text cannot contain characters from the set: [@, #, $, %, ^, &, *]',
                 }),
               ]}
+            />
+            <Dropdown
+              label="color"
+              name="color"
+              value={props.formStore.state.get('color')}
+              onChange={event => {
+                handleValueChange(event, 'color');
+              }}
+              options={dropdownOptions}
+              {...labelPlacementCommonProps}
             />
           </Fieldset>
         </Pod>

@@ -10,6 +10,7 @@ const initialValues = {
   name: 'Kamil B.',
   date: todayFormatted,
   text: 'Hello, world!',
+  color: null,
 };
 
 class TodoStore extends ReduceStore {
