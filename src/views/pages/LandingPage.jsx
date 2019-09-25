@@ -16,6 +16,11 @@ import PresenceValidator from 'carbon-react/lib/utils/validations/presence';
 import withFormStore from '../../data/withFormStore';
 
 const LandingPage = props => {
+  const handleValueChange = event => {
+    const { name, value } = event.target;
+    props.formStore.onUpdateField(name, value);
+  };
+
   return (
     <Row columns="2" columnDivide={false} gutter="small">
       <Column>
@@ -29,7 +34,9 @@ const LandingPage = props => {
           <Fieldset>
             <Textbox
               label="name"
+              name="name"
               value={props.formStore.state.get('name')}
+              onChange={handleValueChange}
               labelInline
               labelWidth={20}
               labelAlign="right"
@@ -45,15 +52,27 @@ const LandingPage = props => {
                 // }),
               ]}
             />
-            <Date label="date" labelInline labelWidth={20} labelAlign="right" />
+            <Date
+              label="date"
+              name="date"
+              value={props.formStore.state.get('date')}
+              onChange={event => {
+                const fakeTarget = {
+                  name: 'date',
+                  value: event.target.value,
+                };
+                event.target = fakeTarget;
+                handleValueChange(event);
+              }}
+              labelInline
+              labelWidth={20}
+              labelAlign="right"
+            />
             <Textarea
               label="text"
               name="text"
               value={props.formStore.state.get('text')}
-              onChange={event => {
-                const { name, value } = event.target;
-                props.formStore.onUpdateField(name, value);
-              }}
+              onChange={handleValueChange}
               labelInline
               labelWidth={20}
               labelAlign="right"
