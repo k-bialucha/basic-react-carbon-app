@@ -28,16 +28,18 @@ class ThemeProvider extends React.Component {
       state: { theme },
     } = this;
 
+    const contextData = { theme, switchTheme };
+
     return (
-      <ThemeContext.Provider value={{ theme, switchTheme }}>
-        {this.props.children}
+      <ThemeContext.Provider value={contextData}>
+        {this.props.children(contextData)}
       </ThemeContext.Provider>
     );
   }
 }
 
 ThemeProvider.propTypes = {
-  children: PropTypes.node.isRequired,
+  children: PropTypes.func.isRequired,
 };
 
 const ThemeConsumer = ThemeContext.Consumer;

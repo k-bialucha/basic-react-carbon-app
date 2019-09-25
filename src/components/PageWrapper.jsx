@@ -9,6 +9,8 @@ import PageHeader from './PageHeader.jsx';
 import ErrorBoundary from './ErrorBoundary.jsx';
 import { PortalToTopPlaceholder } from './PortalToTop.jsx';
 
+import { GlobalStyle } from './PageWrapper.style.js';
+
 const PageWrapper = ({ router, children }) => {
   const {
     routes,
@@ -17,11 +19,16 @@ const PageWrapper = ({ router, children }) => {
 
   return (
     <ThemeProvider>
-      <PortalToTopPlaceholder />
-      <PageHeader routes={routes} />
-      <AppWrapper>
-        <ErrorBoundary key={key}>{children}</ErrorBoundary>
-      </AppWrapper>
+      {({ theme }) => (
+        <>
+          <GlobalStyle theme={theme} />
+          <PortalToTopPlaceholder />
+          <PageHeader routes={routes} />
+          <AppWrapper>
+            <ErrorBoundary key={key}>{children}</ErrorBoundary>
+          </AppWrapper>
+        </>
+      )}
     </ThemeProvider>
   );
 };
