@@ -6,6 +6,8 @@ import { Link } from 'react-router';
 import NavigationBar from 'carbon-react/lib/components/navigation-bar/navigation-bar';
 import { Menu, MenuItem } from 'carbon-react/lib/components/menu/menu';
 
+import HeaderText from './HeaderText.jsx';
+
 const checkIfSelected = (path, routes) => {
   const pathIndex = routes.findIndex(route => route.path === path);
   const isSelected = pathIndex !== -1;
@@ -15,6 +17,7 @@ const checkIfSelected = (path, routes) => {
 
 const PageHeader = ({ routes }) => (
   <NavigationBar>
+    <HeaderText text="App Header" />
     <Menu>
       <Link to="/">
         <MenuItem selected={checkIfSelected('/', routes)}>Landing</MenuItem>
