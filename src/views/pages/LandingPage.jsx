@@ -10,10 +10,17 @@ import Textbox from 'carbon-react/lib/components/textbox';
 import Textarea from 'carbon-react/lib/components/textarea';
 
 import PresenceValidator from 'carbon-react/lib/utils/validations/presence';
-// import LengthValidator from 'carbon-react/lib/utils/validations/length';
-// import DateRangeValidator from 'carbon-react/lib/utils/validations/date-within-range';
+import LengthValidator from 'carbon-react/lib/utils/validations/length';
+import DateRangeValidator from 'carbon-react/lib/utils/validations/date-within-range';
+import RegexValidator from 'carbon-react/lib/utils/validations/regex';
 
 import withFormStore from '../../data/withFormStore';
+
+const labelPlacementCommonProps = {
+  labelInline: true,
+  labelWidth: 20,
+  labelAlign: 'right',
+};
 
 const LandingPage = props => {
   const handleValueChange = event => {
@@ -37,19 +44,17 @@ const LandingPage = props => {
               name="name"
               value={props.formStore.state.get('name')}
               onChange={handleValueChange}
-              labelInline
-              labelWidth={20}
-              labelAlign="right"
+              {...labelPlacementCommonProps}
               validations={[
                 new PresenceValidator({
                   customMessage: 'this field is required',
                 }),
-                // new LengthValidator({
-                //   min: 4,
-                //   max: 10,
-                //   customMessage:
-                //     'this text should have length of 4 up to 10 characters',
-                // }),
+                new LengthValidator({
+                  min: 4,
+                  max: 10,
+                  customMessage:
+                    'this text should contain from 4 up to 10 characters',
+                }),
               ]}
             />
             <Date
@@ -64,18 +69,26 @@ const LandingPage = props => {
                 event.target = fakeTarget;
                 handleValueChange(event);
               }}
-              labelInline
-              labelWidth={20}
-              labelAlign="right"
+              {...labelPlacementCommonProps}
+              validations={[
+                new DateRangeValidator(3, {
+                  customMessage: 'date can be set to up to 3 days from today',
+                }),
+              ]}
             />
             <Textarea
               label="text"
               name="text"
               value={props.formStore.state.get('text')}
               onChange={handleValueChange}
-              labelInline
-              labelWidth={20}
-              labelAlign="right"
+              {...labelPlacementCommonProps}
+              validations={[
+                new RegexValidator({
+                  format: /^([^@#$%^&*]*)$/g,
+                  customMessage:
+                    'text cannot contain characters from the set: [@, #, $, %, ^, &, *]',
+                }),
+              ]}
             />
           </Fieldset>
         </Pod>
