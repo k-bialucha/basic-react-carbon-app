@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import AppWrapper from 'carbon-react/lib/components/app-wrapper/app-wrapper';
 import PageHeader from './PageHeader.jsx';
 import ErrorBoundary from './ErrorBoundary.jsx';
+import { PortalToTopPlaceholder } from './PortalToTop.jsx';
 
 const PageWrapper = ({ router, children }) => {
   const {
@@ -13,6 +14,7 @@ const PageWrapper = ({ router, children }) => {
 
   return (
     <div>
+      <PortalToTopPlaceholder />
       <PageHeader routes={routes} />
       <AppWrapper>
         <ErrorBoundary key={key}>{children}</ErrorBoundary>
