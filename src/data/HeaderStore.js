@@ -3,16 +3,10 @@ import Immutable from 'immutable';
 import { ReduceStore } from 'flux/utils';
 
 import dispatcher from './dispatcher';
-import FormActionTypes from './FormActionTypes';
-
-const today = new Date();
-const todayFormatted = today.toISOString().slice(0, 10);
+import HeaderActionTypes from './HeaderActionTypes';
 
 const initialValues = {
-  name: 'Kamil B.',
-  date: todayFormatted,
-  text: 'Hello, world!',
-  color: null,
+  title: 'App Header',
 };
 
 class TodoStore extends ReduceStore {
@@ -26,9 +20,9 @@ class TodoStore extends ReduceStore {
 
   reduce(state, action) {
     switch (action.type) {
-      case FormActionTypes.UPDATE_FIELD: {
-        const { name, value } = action;
-        return state.set(name, value);
+      case HeaderActionTypes.UPDATE_TITLE: {
+        const { title } = action;
+        return state.set('title', title);
       }
 
       default:

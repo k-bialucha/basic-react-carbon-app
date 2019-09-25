@@ -1,9 +1,9 @@
+import dispatcher from './dispatcher';
 import FormActionTypes from './FormActionTypes';
-import Dispatcher from './Dispatcher';
 
 const Actions = {
   updateField(fieldName, value) {
-    Dispatcher.dispatch({
+    dispatcher.dispatch({
       type: FormActionTypes.UPDATE_FIELD,
       name: fieldName,
       value,
