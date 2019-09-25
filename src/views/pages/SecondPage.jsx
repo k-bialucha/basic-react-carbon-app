@@ -2,6 +2,8 @@ import React from 'react';
 
 import Row, { Column } from 'carbon-react/lib/components/row/row';
 
+import HeaderTextEditor from '../../containers/HeaderTextEditor.jsx';
+
 const SecondPage = () => {
   return (
     <Row columns="2" columnDivide={false} gutter="small">
@@ -19,6 +21,9 @@ const SecondPage = () => {
         <section>
           <h3>Second Page</h3>
           <p>Some second page</p>
+          <p>
+            <HeaderTextEditor />
+          </p>
         </section>
       </Column>
       <Column>
