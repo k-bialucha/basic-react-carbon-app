@@ -3,18 +3,27 @@ import React from 'react';
 import Row, { Column } from 'carbon-react/lib/components/row/row';
 
 import HeaderTextEditor from '../../containers/HeaderTextEditor.jsx';
+import TextDecoratorInput from '../../components/TextDecoratorInput.jsx';
+import DecoratedText from '../../components/DecoratedText.jsx';
 
 const SecondPage = () => {
   return (
     <Row columns="2" columnDivide={false} gutter="small">
       <Column>
         <section>
-          <h3>Lorem Ipsum [1]</h3>
-          <p>
-            Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse
-            quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat
-            quo voluptas nulla pariatur?
-          </p>
+          <h3>Decorate Text</h3>
+          <TextDecoratorInput>
+            {text => (
+              <ul>
+                <li>
+                  <DecoratedText text={text} separator="*" />
+                </li>
+                <li>
+                  <DecoratedText text={text} separator="-" />
+                </li>
+              </ul>
+            )}
+          </TextDecoratorInput>
         </section>
       </Column>
       <Column>
