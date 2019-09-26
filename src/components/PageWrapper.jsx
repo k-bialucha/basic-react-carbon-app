@@ -23,7 +23,7 @@ const PageWrapper = ({ router, children }) => {
         <>
           <GlobalStyle theme={variables} />
           <PortalToTopPlaceholder />
-          <PageHeader routes={routes} />
+          <PageHeader routes={routes} theme={variables} />
           <AppWrapper>
             <ErrorBoundary key={key}>{children}</ErrorBoundary>
           </AppWrapper>

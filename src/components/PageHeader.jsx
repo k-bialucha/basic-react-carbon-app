@@ -1,12 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-import { Link } from 'react-router';
-
-import NavigationBar from 'carbon-react/lib/components/navigation-bar/navigation-bar';
-import { Menu, MenuItem } from 'carbon-react/lib/components/menu/menu';
+import { Menu } from 'carbon-react/lib/components/menu/menu';
 
 import HeaderTextContainer from '../containers/HeaderTextContainer.jsx';
+
+import { StyledNavigationBar, StyledMenuItem } from './PageHeader.style';
 
 const checkIfSelected = (path, routes) => {
   const pathIndex = routes.findIndex(route => route.path === path);
@@ -15,29 +14,40 @@ const checkIfSelected = (path, routes) => {
   return isSelected;
 };
 
-const PageHeader = ({ routes }) => (
-  <NavigationBar>
-    <HeaderTextContainer />
-    <Menu>
-      <Link to="/">
-        <MenuItem selected={checkIfSelected('/', routes)}>Landing</MenuItem>
-      </Link>
-      <Link to="/first">
-        <MenuItem selected={checkIfSelected('/first', routes)}>
+const PageHeader = ({ routes, theme }) => {
+  return (
+    <StyledNavigationBar theme={theme} style={{ backgroundColor: 'grey' }}>
+      <HeaderTextContainer />
+      <Menu>
+        <StyledMenuItem
+          theme={theme}
+          to="/"
+          selected={checkIfSelected('/', routes)}
+        >
+          Landing
+        </StyledMenuItem>
+        <StyledMenuItem
+          theme={theme}
+          to="/first"
+          selected={checkIfSelected('/first', routes)}
+        >
           First Page
-        </MenuItem>
-      </Link>
-      <Link to="/second">
-        <MenuItem selected={checkIfSelected('/second', routes)}>
+        </StyledMenuItem>
+        <StyledMenuItem
+          theme={theme}
+          to="/second"
+          selected={checkIfSelected('/second', routes)}
+        >
           Second Page
-        </MenuItem>
-      </Link>
-    </Menu>
-  </NavigationBar>
-);
+        </StyledMenuItem>
+      </Menu>
+    </StyledNavigationBar>
+  );
+};
 
 PageHeader.propTypes = {
   routes: PropTypes.array.isRequired,
+  theme: PropTypes.object.isRequired,
 };
 
 export default PageHeader;
