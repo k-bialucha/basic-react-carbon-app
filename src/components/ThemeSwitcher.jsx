@@ -10,9 +10,10 @@ const ThemeSwitcher = () => {
     <StyledIcon
       type={variables.icon}
       theme={variables}
-      bgTheme="maintenance"
       bgShape="circle"
       onClick={switchTheme}
+      tooltipMessage="change theme"
+      tooltipPosition="left"
     />
   );
 };
