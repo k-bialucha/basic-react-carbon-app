@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import PropTypes from 'prop-types';
 
 import { Row, Column } from 'carbon-react/lib/components/row/row';
@@ -9,9 +9,11 @@ import {
 import Pod from 'carbon-react/lib/components/pod/pod';
 
 import { StyledLink } from './FirstPage.style';
+import ThemeContext from '../../../data/ThemeContext';
 
 const FirstPage = props => {
   const basePathname = '/first';
+  const { variables } = useContext(ThemeContext);
 
   return (
     <Row columns="2" columnDivide gutter="medium-large">
@@ -19,6 +21,7 @@ const FirstPage = props => {
         <MenuList href="foo">
           <MenuListItem>
             <StyledLink
+              theme={variables}
               to={`${basePathname}/content1`}
               activeClassName="active"
             >
@@ -27,6 +30,7 @@ const FirstPage = props => {
           </MenuListItem>
           <MenuListItem>
             <StyledLink
+              theme={variables}
               to={`${basePathname}/content2`}
               activeClassName="active"
             >
@@ -35,6 +39,7 @@ const FirstPage = props => {
           </MenuListItem>
           <MenuListItem>
             <StyledLink
+              theme={variables}
               to={`${basePathname}/content3`}
               activeClassName="active"
             >
