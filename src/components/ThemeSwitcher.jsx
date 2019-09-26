@@ -1,12 +1,15 @@
 import React, { useContext } from 'react';
-import Icon from 'carbon-react/lib/components/icon/icon';
+
 import ThemeContext from '../data/ThemeContext';
+
+import { StyledIcon } from './ThemeSwitcher.style';
 
 const ThemeSwitcher = () => {
   const { variables, switchTheme } = useContext(ThemeContext);
   return (
-    <Icon
+    <StyledIcon
       type={variables.icon}
+      theme={variables}
       bgTheme="maintenance"
       bgShape="circle"
       onClick={switchTheme}

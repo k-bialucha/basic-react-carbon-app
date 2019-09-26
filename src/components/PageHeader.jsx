@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 import { Menu } from 'carbon-react/lib/components/menu/menu';
 
 import HeaderTextContainer from '../containers/HeaderTextContainer.jsx';
+import ThemeSwitcher from './ThemeSwitcher.jsx';
 
-import { StyledNavigationBar, StyledMenuItem } from './PageHeader.style';
+import {
+  StyledNavigationBar,
+  StyledMenuItem,
+  ThemeSwitcherContainer,
+} from './PageHeader.style';
 
 const checkIfSelected = (path, routes) => {
   const pathIndex = routes.findIndex(route => route.path === path);
@@ -41,6 +46,9 @@ const PageHeader = ({ routes, theme }) => {
           Second Page
         </StyledMenuItem>
       </Menu>
+      <ThemeSwitcherContainer>
+        <ThemeSwitcher />
+      </ThemeSwitcherContainer>
     </StyledNavigationBar>
   );
 };
