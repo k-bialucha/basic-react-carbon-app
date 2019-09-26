@@ -1,4 +1,5 @@
 /* eslint-disable import/prefer-default-export */
+/* eslint indent: ["error", 2, { "ignoredNodes": ["ConditionalExpression"] }] */
 import styled from 'styled-components';
 
 import NavigationBar from 'carbon-react/lib/components/navigation-bar/navigation-bar';
@@ -9,6 +10,16 @@ export const StyledMenuItem = styled(MenuItem)`
   background-color: ${props => props.theme.background} !important;
 
   transition: background-color 200ms;
+
+  &::after {
+    background-color: ${props =>
+      props.selected ? props.theme.secondary : 'transparent'} !important;
+  }
+  &:hover {
+    &::after {
+      background-color: ${props => props.theme.primary} !important;
+    }
+  }
 `;
 
 export const ThemeSwitcherContainer = styled.div``;
