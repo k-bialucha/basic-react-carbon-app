@@ -19,9 +19,9 @@ const PageWrapper = ({ router, children }) => {
 
   return (
     <ThemeProvider>
-      {({ theme }) => (
+      {({ variables }) => (
         <>
-          <GlobalStyle theme={theme} />
+          <GlobalStyle theme={variables} />
           <PortalToTopPlaceholder />
           <PageHeader routes={routes} />
           <AppWrapper>

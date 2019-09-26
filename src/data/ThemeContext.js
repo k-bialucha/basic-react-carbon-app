@@ -1,34 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const ThemeContext = React.createContext({ theme: 'light' });
+import themes from '../themes';
 
-const availableThemes = ['light', 'dark'];
+const ThemeContext = React.createContext();
+const ThemeConsumer = ThemeContext.Consumer;
+
+const availableThemeNames = Object.keys(themes);
 
 class ThemeProvider extends React.Component {
   state = {
-    theme: 'light',
+    theme: availableThemeNames[0],
+    variables: themes[availableThemeNames[0]],
   };
 
   switchTheme = () => {
     const currentTheme = this.state.theme;
-    const currentThemeIndex = availableThemes.indexOf(currentTheme);
+    const currentThemeIndex = availableThemeNames.indexOf(currentTheme);
 
-    const nextThemeIndex = (currentThemeIndex + 1) % availableThemes.length;
-    const nextTheme = availableThemes[nextThemeIndex];
+    const nextThemeIndex = (currentThemeIndex + 1) % availableThemeNames.length;
+    const nextTheme = availableThemeNames[nextThemeIndex];
 
     this.setState({
       theme: nextTheme,
+      variables: themes[nextTheme],
     });
   };
 
   render() {
     const {
       switchTheme,
-      state: { theme },
+      state: { theme, variables },
     } = this;
 
-    const contextData = { theme, switchTheme };
+    const contextData = { theme, variables, switchTheme };
 
     return (
       <ThemeContext.Provider value={contextData}>
@@ -41,8 +46,6 @@ class ThemeProvider extends React.Component {
 ThemeProvider.propTypes = {
   children: PropTypes.func.isRequired,
 };
-
-const ThemeConsumer = ThemeContext.Consumer;
 
 export { ThemeProvider, ThemeConsumer };
 export default ThemeContext;
