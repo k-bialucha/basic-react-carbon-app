@@ -20,9 +20,18 @@ const dark = {
   text: '#ccc',
 };
 
+const darkBlue = {
+  icon: 'lightbulb_off',
+  primary: '#E42C2D',
+  secondary: '#1963F6',
+  background: '#001a2a',
+  text: '#bababa',
+};
+
 const themes = {
   light,
   dark,
+  darkBlue,
 };
 
 export default themes;
