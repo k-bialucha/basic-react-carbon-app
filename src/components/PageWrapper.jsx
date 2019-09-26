@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import { TransitionGroup, CSSTransition } from 'react-transition-group';
+
 import AppWrapper from 'carbon-react/lib/components/app-wrapper/app-wrapper';
 
 import { ThemeProvider } from '../data/ThemeContext';
@@ -14,7 +16,7 @@ import { GlobalStyle } from './PageWrapper.style.js';
 const PageWrapper = ({ router, children }) => {
   const {
     routes,
-    location: { key },
+    location: { key, pathname },
   } = router;
 
   return (
@@ -25,7 +27,21 @@ const PageWrapper = ({ router, children }) => {
           <PortalToTopPlaceholder />
           <PageHeader routes={routes} theme={variables} />
           <AppWrapper>
-            <ErrorBoundary key={key}>{children}</ErrorBoundary>
+            <div className="transition-container">
+              <TransitionGroup>
+                <CSSTransition
+                  // in={match != null}
+                  key={pathname}
+                  timeout={500}
+                  classNames="transition"
+                  unmountOnExit
+                >
+                  <div className="transition">
+                    <ErrorBoundary key={key}>{children}</ErrorBoundary>
+                  </div>
+                </CSSTransition>
+              </TransitionGroup>
+            </div>
           </AppWrapper>
         </>
       )}
