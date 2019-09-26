@@ -1,7 +1,8 @@
 /* eslint-disable import/prefer-default-export */
 import { createGlobalStyle } from 'styled-components';
 
-const transitionDuration = '500ms';
+const transitionDuration = '400ms';
+const portalTransitionDuration = '250ms';
 
 export const GlobalStyle = createGlobalStyle`
   body {
@@ -10,7 +11,7 @@ export const GlobalStyle = createGlobalStyle`
 
     transition: background-color 200ms;
 
-    .transition-container {
+    .transition-container, .portal-transition-container {
       position: relative;
     }
 
@@ -34,5 +35,28 @@ export const GlobalStyle = createGlobalStyle`
       transition: opacity ${transitionDuration} ease-out;
     }
 
+    .portal-transition-enter {
+      max-height: 0;
+      transform: translateY(-120px);
+    }
+
+    .portal-transition-enter-active {
+      max-height: 120px;
+      transform: translateY(0);
+      transition: max-height ${portalTransitionDuration},
+        transform ${portalTransitionDuration};
+    }
+
+    .portal-transition-exit {
+      max-height: 120px;
+      transform: translateY(0);
+    }
+
+    .portal-transition-exit-active {
+      max-height: 0;
+      transform: translateY(-120px);
+      transition: max-height ${portalTransitionDuration},
+        transform ${portalTransitionDuration};
+    }
   }
 `;

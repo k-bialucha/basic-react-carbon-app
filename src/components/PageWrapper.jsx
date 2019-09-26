@@ -24,13 +24,23 @@ const PageWrapper = ({ router, children }) => {
       {({ variables }) => (
         <>
           <GlobalStyle theme={variables} />
-          <PortalToTopPlaceholder />
+          <div className="portal-transition-container">
+            <TransitionGroup>
+              <CSSTransition
+                key={pathname}
+                timeout={250}
+                classNames="portal-transition"
+              >
+                <PortalToTopPlaceholder />
+              </CSSTransition>
+            </TransitionGroup>
+          </div>
+
           <PageHeader routes={routes} theme={variables} />
           <AppWrapper>
             <div className="transition-container">
               <TransitionGroup>
                 <CSSTransition
-                  // in={match != null}
                   key={pathname}
                   timeout={500}
                   classNames="transition"
